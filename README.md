@@ -1,14 +1,14 @@
-#ASTRONAV
+# ASTRONAV
 
 A framework for simulating the solar system, designed as a test harness for solar system navigation software, specifically a startracker. 
 
 #Prerequisites
 
-##OpenGL
+## OpenGL
 
 sudo apt install freeglut3-dev libglu1-mesa-dev
 
-##CSPICE
+## CSPICE
 
 Download cspice toolkit:
   http://naif.jpl.nasa.gov/pub/naif/toolkit//C/PC_Linux_GCC_64bit/packages/cspice.tar.Z
