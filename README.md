@@ -30,6 +30,8 @@ http://www.astronexus.com/files/downloads/hygdata_v3.csv.gz
 
 # Running
 
+  (it runs better then the gifs)
+
   ./solar
   
   ![Outer Animation](../assets/photos/astronav-outer.gif?raw=true)
