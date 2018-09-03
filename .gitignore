@@ -1,0 +1,8 @@
+solar
+*.o
+cspice/
+cspice.tar.Z
+de430.bsp
+hygdata_v3.csv
+*.swp
+
