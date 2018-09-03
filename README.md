@@ -31,8 +31,17 @@ http://www.astronexus.com/files/downloads/hygdata_v3.csv.gz
 # Running
 
   ./solar
+  
+  ![Outer Animation](../assets/photos/astronav-outer.gif?raw=true)
+  
   ./solar --inner
+  
+  ![Inner Animation](../assets/photos/astronav-inner.gif?raw=true)
+  
   ./solar --sat
+  
+  ![Sat Animation](../assets/photos/astronav-sat.gif?raw=true)
+  
   ./solar --auto
-
-# Photos
+  
+  ![Auto Animation](../assets/photos/astronav-auto.gif?raw=true)
