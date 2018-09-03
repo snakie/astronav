@@ -2,7 +2,7 @@
 
 A framework for simulating the solar system, designed as a test harness for solar system navigation software, specifically a startracker. 
 
-#Prerequisites
+# Prerequisites
 
 ## OpenGL
 
