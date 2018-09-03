@@ -31,5 +31,8 @@ http://www.astronexus.com/files/downloads/hygdata_v3.csv.gz
 # Running
 
   ./solar
+  ./solar --inner
+  ./solar --sat
+  ./solar --auto
 
 # Photos
