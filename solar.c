@@ -25,6 +25,7 @@ struct camera_position {
 	double x; double y; double z;
 	double lx; double ly; double lz;
 	double up_x; double up_y; double up_z;
+	double alt_cutoff;
 };
 
 static struct camera_position cp = { 0 };
@@ -34,6 +35,7 @@ enum view_modes {
 	INNER,
 	SAT,
 	AUTO,
+	PLUTO,
 };
 
 enum solar_satellites {
@@ -121,7 +123,12 @@ void render_stars(struct star *stars)
 
 void idle(void)
 {
-	timestep_days += 1;
+	if (view_mode == PLUTO) {
+		/* ~15 seconds real time with current SPICE data */
+		timestep_days += 200;
+	} else {
+		timestep_days += 1;
+	}
 	epoch_time = SECONDS_PER_DAY * timestep_days;
 	glutPostRedisplay();
 }
@@ -154,9 +161,9 @@ void render(void)
 		gluLookAt(0.0, 0.0, 0.0,
 			  0.0, 1.0, 0.0,
 			  0.0, 0.0, 1.0);
-	} else if (view_mode == AUTO) {
-		if(cp.z < AUTO_ALTITUDE_CUTOFF) {
-			cp.z += fabs(AUTO_ALTITUDE_CUTOFF - cp.z) / 200;
+	} else if (view_mode == AUTO || view_mode == PLUTO) {
+		if(cp.z < cp.alt_cutoff) {
+			cp.z += fabs(cp.alt_cutoff - cp.z) / 200;
 		}
 		gluLookAt(cp.x, cp.y, cp.z,
 			  cp.lx, cp.ly, cp.lz,
@@ -198,7 +205,16 @@ int main(int argc, char* argv[]) {
 			cp.z = -altitude_km;
 			cp.y = -altitude_km;
 			cp.up_z = 1.0;
+			cp.alt_cutoff = AUTO_ALTITUDE_CUTOFF; 
+		} else if (strcmp(argv[1], "--pluto") == 0) {
+			view_mode = PLUTO;
+			cp.z = -altitude_km;
+			cp.y = -altitude_km;
+			cp.up_z = 1.0;
+			cp.alt_cutoff = 0;
+
 		}
+
 	}
 	furnsh_c("de430.bsp");
 	glutInit(&argc, argv);  
